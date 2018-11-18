@@ -1,0 +1,72 @@
+################################ 程序全局配置文件 ##############################
+simple:
+  #500页面
+  errorPage: /500
+  #404页面
+  notFoundPage: /404
+  #403页面
+  UnauthorizedPage: /403
+  # 是否开启 AOP 日志，默认开启
+  openAopLog: true
+  # 密码salt值
+  salt: simple
+  #配置json时间格式
+  timeFormat: yyyy-MM-dd
+  #随机id
+  uuid: ${random.uuid}
+  #上传文件根路径
+  uploadPath: /upload
+  #文件目录前缀
+  uploadPrefix: yyyy-MM-dd
+
+
+  shiro:
+    # shiro redis缓存时长，默认1800秒
+    expireIn: 1800
+    # session 超时时间，默认1800000毫秒
+    sessionTimeout: 1800000
+    # rememberMe cookie有效时长，默认86400秒，即一天
+    cookieTimeout: 86400
+    # 免认证的路径配置，如静态资源，druid监控页面，注册页面，验证码请求等
+    anonUrl: /css/**,/js/**,/fonts/**,/img/**,/druid/**,/**/*.json,/login.do,/webSocket/*,/public/**,/upload/**
+    # 登录 url
+    loginUrl: /login.view
+    # 登录成功后跳转的 url
+    successUrl: /index.do
+    # 登出 url
+    logoutUrl: /logout.do
+    # 未授权跳转 url
+    unauthorizedUrl: /403
+
+  wechat:
+    #公众号appid
+    appid: wx8c0b8004a2293772
+    #公众号secret
+    secret: 1210a6a2e0d626cae44cf6c68e8a4c74
+    #accessToken接口
+    accessTokenUrl: https://api.weixin.qq.com/cgi-bin/token?grant_type=%s&appid=%s&secret=%s
+    #添加素材接口
+    uploadMediaUrl: https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=%s&type=%s
+    #删除素材接口
+    deleteMediaUrl: https://api.weixin.qq.com/cgi-bin/material/del_material?access_token=%s
+    #获取素材接口
+    getMaterialUrl: https://api.weixin.qq.com/cgi-bin/material/get_material?access_token=%s
+    #获取素材列表接口
+    getMaterialListUrl: https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=%s
+    #获取素材数量接口
+    getMaterialCountUrl: https://api.weixin.qq.com/cgi-bin/material/get_materialcount?access_token=%s
+    #新增图文素材接口
+    addNewsUrl: https://api.weixin.qq.com/cgi-bin/material/add_news?access_token=%s
+    #修改图文素材接口
+    updateNewsUrl: https://api.weixin.qq.com/cgi-bin/material/update_news?access_token=%s
+    #上传图文内容中的图片
+    uploadNewsImgUrl: https://api.weixin.qq.com/cgi-bin/media/uploadimg?access_token=%s
+
+    #查询公众号菜单列表
+    getMenuUrl: https://api.weixin.qq.com/cgi-bin/menu/get?access_token=%s
+    #创建菜单
+    createMenuUrl: https://api.weixin.qq.com/cgi-bin/menu/create?access_token=%s
+    #删除菜单
+    deleteMenuUrl: https://api.weixin.qq.com/cgi-bin/menu/delete?access_token=%s
+
+

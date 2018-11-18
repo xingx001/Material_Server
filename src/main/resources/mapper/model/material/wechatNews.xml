@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.simple.springbootbasic.model.material.mapper.WechatNewsMapper">
+    <resultMap id="wechatNewsMap" type="WechatNews">
+        <id column="media_id" property="mediaId"/>
+        <result column="parent_media_id" property="parentMediaId"/>
+        <result column="news_title" property="newsTitle"/>
+        <result column="news_author" property="newsAuthor"/>
+        <result column="news_digest" property="newsDigest"/>
+        <result column="content" property="content"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="thumb_media_id" property="thumbMediaId"/>
+        <result column="content_source_url" property="contentSourceUrl"/>
+        <result column="show_cover_pic" property="showCoverPic"/>
+        <result column="news_url" property="newsUrl"/>
+        <result column="thumb_media_url" property="thumbMediaUrl"/>
+        <result column="need_open_comment" property="needOpenComment"/>
+        <result column="only_fans_can_comment" property="onlyFansCanComment"/>
+        <result column="thumb_media_local_url" property="thumbMediaLocalUrl"/>
+    </resultMap>
+
+
+    <select id="selectAllByOrder" resultMap="wechatNewsMap">
+        select media_id,news_title,news_author,news_digest,create_time,update_time,thumb_media_id,news_url,thumb_media_url,thumb_media_local_url from t_wechat_news order by create_time desc
+    </select>
+
+    <select id="selectNewsCount" resultType="int">
+        select count(*) from t_wechat_news
+    </select>
+
+    <select id="selectByMediaId" parameterType="String" resultMap="wechatNewsMap">
+        select * from t_wechat_news where media_id=#{mediaId}
+    </select>
+</mapper>

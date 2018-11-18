@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.simple.springbootbasic.model.material.mapper.MaterialMapper">
+
+    <resultMap id="wechatMediaMap" type="WechatMedia">
+        <id column="media_id" property="mediaId"/>
+        <result column="media_name" property="mediaName"/>
+        <result column="create_time" property="createTime"/>
+        <result column="media_url" property="mediaUrl"/>
+        <result column="media_type" property="mediaType"/>
+        <result column="real_url" property="realUrl"/>
+    </resultMap>
+
+    <delete id="deleteMedia" parameterType="String">
+        delete from t_wechat_media where media_id=#{mediaId}
+    </delete>
+
+    <select id="findMediaCount" resultType="int">
+        select count(*) from t_wechat_media
+    </select>
+    <select id="selectAllByOrder" resultMap="wechatMediaMap">
+        select * from t_wechat_media order by create_time desc
+    </select>
+
+    <select id="selectByMediaId" resultMap="wechatMediaMap" parameterType="String">
+        select * from t_wechat_media where media_id=#{mediaId}
+    </select>
+
+</mapper>
